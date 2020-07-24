@@ -1,73 +1,53 @@
 #include <stdio.h>
-#include <math.h>
-#include <stdbool.h>
+#include <ctype.h>
 #include "stack.h"
-bool isOperator(char ch)
+void PostfixEval(char postfix[])
 {
-    if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^')
-        return true;
-    return false;
-}
-bool isOperand(char ch){
-     if (ch >= '0' && ch <= '9')
-        return true; 
-    return false;   
-}
+    int i;
+    char ch;
+    int val;
+    int A, B;
+    for (i = 0; postfix[i] != 'e'; i++) {
+        ch = postfix[i];
+        if (isdigit(ch)) {
+            push(ch - '0');
+        }
+        else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+            A = pop();
+            B = pop();
 
-float convert(char ch)
-{
-    int value;
-    value = ch;
-    return (float)(value - 48); 
-}
-float operation(int a, int b, char op)
-{
-    if (op == '*')
-        return b * a;
-    else if (op == '/')
-        return b / a;
-    else if (op == '+')
-        return b + a;
-    else if (op == '-')
-        return b - a;
-    else if (op == '^')
-        {
-            float ref=1;
-            for(int i=0;i<a;i++){
-                ref=ref*b;
+            switch (ch)
+            {
+            case '*':
+                val = B * A;
+                break;
+            case '/':
+                val = B / A;
+                break;
+            case '+':
+                val = B + A;
+                break;
+            case '-':
+                val = B - A;
+                break;
             }
-            return ref;
-        }
-    else
-        return 0;
-}
-float PostfixEval() 
-{
-    int a, b; 
-    for (int i=top;i<SIZE;i++)
-    {
-        if (isOperator(stack[i])) 
-        {
-            a = peek();
-            pop();
-            b = peek();
-            pop();
-            push(operation(a, b,stack[i]));
-        }
-        else if (isOperand(stack[i]))
-        {
-            push(convert(stack[i])); 
+            push(val);
         }
     }
-    return peek();
+    printf("Result of expression evaluation : %d \n", pop());
 }
-int main (){
-    // char post[50];
-    // printf("Enter a valid postfix Expression: ");
-    // scanf("%s",post);
-    push('*');
-    push('8');
-    push('5');
-    printf("The evaluation is %f",PostfixEval());
+int main()
+{
+    int i;
+    char postfix[SIZE];
+    printf(" \nEnter postfix expression,\npress e to end expression ");
+    for (i = 0; i <= SIZE - 1; i++) {
+        scanf("%c", &postfix[i]);
+        if (postfix[i] == 'e') 
+        {
+            break;
+        } 
+    }
+    PostfixEval(postfix);
     return 0;
 }
