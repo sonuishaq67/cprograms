@@ -33,18 +33,29 @@ void preorder(node *t)
 {
     if (t != NULL)
     {
-        printf("\n%d\n", t->data);
+        printf("%d ", t->data);
         preorder(t->left);
         preorder(t->right);
     }
 }
-
+void postOrder(node *t)
+{
+    if(t!=NULL)
+    {
+        postOrder(t->left);
+        postOrder(t->right);
+        printf("%d ", t->data);
+    }
+}
 int main()
 {
     node *root;
     root = create();
     printf("\nThe preorder traversal of tree is:\n");
     preorder(root);
-
+    printf("\n");
+    printf("\nThe postorder traversal of tree is:\n");
+    postOrder(root);
+    printf("\n");
     return 0;
 }
