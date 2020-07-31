@@ -4,7 +4,7 @@
 void insert(int);
 void delete (int);
 void init();
-void check(int);
+void put(int);
 void display();
 int pri_que[MAX];
 int front, rear;
@@ -27,11 +27,11 @@ void insert(int data)
     }
     else
     {
-        check(data);
+        put(data);
         rear++;
     }
 }
-void check(int data)
+void put(int data)
 {
     int i, j;
     for (i = 0; i <= rear; i++)
@@ -46,8 +46,8 @@ void check(int data)
 }
 void delete (int data)
 {
-        int i;
-    if ((front==-1) && (rear==-1))
+    int i;
+    if ((front == -1) && (rear == -1))
     {
         printf("\nQueue is empty no elements to delete");
         return;
@@ -60,12 +60,23 @@ void delete (int data)
             {
                 pri_que[i] = pri_que[i + 1];
             }
-        pri_que[i] = -99;
-        rear--;
-        if (rear == -1) 
-            front = -1;
-        return;
+            pri_que[i] = -99;
+            rear--;
+            if (rear == -1)
+                front = -1;
+            return;
         }
     }
     printf("\n%d not found in queue to delete", data);
+}
+void display()
+{
+    if ((front == -1) && (rear == -1))
+    {
+        printf("\nQueue is empty");
+        return;
+    }
+    for (front = front; front <= rear; front++)
+        printf(" %d ", pri_que[front]);
+    front = 0;
 }
