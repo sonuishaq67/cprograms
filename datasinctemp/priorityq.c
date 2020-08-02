@@ -80,3 +80,14 @@ void display()
         printf(" %d ", pri_que[front]);
     front = 0;
 }
+
+int main()
+{
+    insert(60);
+    insert(30);
+    insert(20);
+    insert(40);
+    insert(50);
+    display();
+    return 0;
+}
