@@ -35,10 +35,12 @@ void insert(int key, int data)
     link->key = key;
     link->data = data;
     struct Node *temp = head;
-    while (temp->key<key)
+    while (temp->key)
     {
-    
+        temp=temp->next;
     }
+    link->next=temp;
+    temp->next=
     
 }
 struct Node *delete (int key)
