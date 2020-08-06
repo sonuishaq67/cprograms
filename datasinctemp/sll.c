@@ -29,19 +29,24 @@ void insertFirst(int key, int data)
     link->next = head;
     head = link;
 }
-void insert(int key, int data)
+void insert(int key, int data,int pos)
 {
     struct Node *link = (struct Node *)(malloc(sizeof(struct Node)));
     link->key = key;
     link->data = data;
-    struct Node *temp = head;
-    while (temp->key)
+    if (head==null)
     {
-        temp=temp->next;
+        head=link;
     }
-    link->next=temp;
-    temp->next=
-    
+    else {
+        struct Node *temp = head;
+        while (pos--)
+        {
+            temp=temp->next;
+        }
+        link->next=temp->next;
+        temp->next=link;
+    }
 }
 struct Node *delete (int key)
 {
@@ -113,12 +118,12 @@ struct Node *deleteFirst()
 }
 void main()
 {
-    insertFirst(1, 10);
-    insertFirst(2, 20);
-    insertFirst(3, 30);
-    insertFirst(4, 72);
-    insertFirst(5, 40);
-    insertFirst(6, 56);
+    insert(1, 10,1);
+    insert(2, 20,2);
+    insert(3, 30,3);
+    insert(4, 72,4);    
+    insert(5, 40,5);
+    insert(6, 56,6);
 
     printf("Original List: ");
 
