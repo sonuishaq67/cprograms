@@ -60,7 +60,7 @@ int deQueue(struct Queue *q)
 void displayQueue(struct Queue *q) 
 { 
 	struct Node *temp = q->front; 
-	printf("\nElements in Circular Queue are: "); 
+	printf("\nElements in Queue are: "); 
 	while (temp->link != q->front) 
 	{ 
 		printf("%d ", temp->data); 
@@ -72,25 +72,17 @@ void displayQueue(struct Queue *q)
 
 int main() 
 { 
-	
-	Queue *q = new Queue; 
+	struct Queue *q = malloc(sizeof(struct Queue)); 
 	q->front = q->rear = NULL; 
-
-	
-	enQueue(q, 14); 
-	enQueue(q, 22); 
-	enQueue(q, 6); 
-
-	
+	enQueue(q, 10); 
+	enQueue(q, 20); 
+	enQueue(q, 30);
+	enQueue(q, 40);
+	enQueue(q, 50); 
 	displayQueue(q); 
-
-	
 	printf("\nDeleted value = %d", deQueue(q)); 
 	printf("\nDeleted value = %d", deQueue(q)); 
-
-	
 	displayQueue(q); 
-
 	enQueue(q, 9); 
 	enQueue(q, 20); 
 	displayQueue(q); 

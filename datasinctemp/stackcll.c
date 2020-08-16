@@ -71,12 +71,15 @@ void display()
 
 int main()
 {
-    push(11);
-    push(22);
-    push(33);
-    push(44);
+    push(10);
+    push(20);
+    push(30);
+    push(40);
+    push(50);
+    push(60);
     display();
     printf("The top element is %d\n", peek());
+    pop();
     pop();
     pop();
     display();
