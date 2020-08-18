@@ -6,9 +6,28 @@ struct Node
     int pow;
     struct Node *next;
 };
-
-void insert(int coeff, int data)
+struct Node *head=NULL;
+void insert(int coeff, int pow)
 {
+   struct Node *link = (struct Node *)(malloc(sizeof(struct Node)));
+    link->coeff=coeff;
+    link->pow=pow;
+    if(head==NULL)
+    {
+        head=link;
+    }
+    else
+    {
+        struct Node *temp=head;
+        while(temp)
+        {
+            if(pow>temp->pow)
+            {
+
+            }
+        }
+    }
+    
 }
 
 int main()
@@ -19,5 +38,6 @@ int main()
         printf("Enter two numbers: coeff and power");
         int a,b;
         scanf("%d %d",&a,&b);
+        insert(a,b);
     }
 }
