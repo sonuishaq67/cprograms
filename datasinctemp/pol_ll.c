@@ -14,6 +14,7 @@ void insert(int coeff, int pow)
     link->pow = pow;
     if (head == NULL)
     {
+        link->next = NULL;
         head = link;
     }
     else
@@ -26,11 +27,12 @@ void insert(int coeff, int pow)
         else
         {
             struct Node *temp = head;
-            while (temp->pow > pow+1)
+            while ((temp->pow > pow + 2) && (temp->next))
             {
-                temp=temp->next;
+                temp = temp->next;
             }
-            temp->next=link;
+            link->next = temp->next;
+            temp->next = link;
         }
     }
 }
@@ -46,11 +48,12 @@ void print()
 }
 int main()
 {
-    insert(10, 1);
+    insert(60, 6);
     insert(40, 4);
+    insert(10, 1);
     insert(20, 2);
     insert(30, 3);
-
+    insert(50, 5);
     print();
     return 0;
 }
