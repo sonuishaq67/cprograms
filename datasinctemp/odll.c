@@ -43,6 +43,7 @@ int main()
     insert(10);
     insert(20);
     insert(30);
+    insert(40);
     display();
     return 0;
 }
