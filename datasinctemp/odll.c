@@ -17,14 +17,22 @@ void insert(int data)
         head = link;
     else
     {
-        Node *temp = head;
-        while (temp->next && data < temp->data)
+        if (head->data < data)
         {
-            temp = temp->next;
+            head->prev = link;
+            link->next = head;
+            head = link;
         }
-        link->prev = temp->prev;
-        link->next = temp->next;
-        temp = link;
+        else
+        {
+            Node *temp = head;
+            while (temp->next && data < temp->data)
+            {
+                temp = temp->next;
+            }
+            temp->next = link;
+            link->prev = temp;
+        }
     }
 }
 
@@ -33,8 +41,8 @@ void display()
     Node *temp = head;
     while (temp)
     {
-        printf("%d ",temp->data);
-        temp=temp->next;
+        printf("%d ", temp->data);
+        temp = temp->next;
     }
 }
 
@@ -42,8 +50,9 @@ int main()
 {
     insert(10);
     insert(20);
-    insert(30);
     insert(40);
+    insert(30);
+
     display();
     return 0;
 }
