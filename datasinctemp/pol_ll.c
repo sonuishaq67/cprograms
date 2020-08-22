@@ -54,6 +54,8 @@ int main()
     insert(60, 6);
     insert(30, 3);
     insert(40, 4);
+    insert(80, 8);
+    insert(60, 6);
     print();
     return 0;
 }
