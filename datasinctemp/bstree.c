@@ -37,7 +37,7 @@ int main()
 {
 
     struct node *root = NULL;
-    root = insert(root, 5   0);
+    root = insert(root, 50);
     insert(root, 30);
     insert(root, 20);
     insert(root, 40);
