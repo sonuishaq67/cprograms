@@ -26,7 +26,7 @@ node *insert(node *temp, int key)
 }
 void inorder(node *root)
 {
-    if (root != NULL)
+    if (root != null)
     {
         inorder(root->left);
         printf("%d \n", root->data);
