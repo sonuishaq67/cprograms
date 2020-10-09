@@ -39,6 +39,7 @@ int isempty()
 {
     return head==NULL;
 }
+int display()
 {
     if(head == NULL)
     {
