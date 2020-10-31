@@ -40,12 +40,24 @@ void preorder(node *t)
 }
 void postOrder(node *t)
 {
-    if(t!=NULL)
+    if (t != NULL)
     {
         postOrder(t->left);
         postOrder(t->right);
         printf("%d ", t->data);
     }
+}
+void printInorder(struct node *t)
+{
+    if (t == NULL)
+        return;
+    printInorder(t->left);
+
+    /* then print the data of node */
+    printf("%d ", t->data);
+
+    /* now recur on right child */
+    printInorder(t->right);
 }
 int main()
 {
@@ -57,5 +69,6 @@ int main()
     printf("\nThe postorder traversal of tree is:\n");
     postOrder(root);
     printf("\n");
+    printInorder(root);
     return 0;
 }
