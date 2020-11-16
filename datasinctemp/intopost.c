@@ -6,8 +6,6 @@ int top = -1;
 #include <ctype.h>
 #include <string.h>
 #include <stdbool.h>
-char infix[SIZE];
-char postfix[SIZE];
 bool isOperator(char x)
 {
    if (x == '+' || x == '-' || x == '*' || x == '/' || x == '^')
@@ -66,7 +64,7 @@ void infixToPostfix(char infix[], char postfix[])
    j = 0;
    item = infix[i];
 
-   while (item != '\0')
+   while (item)
    {
       if (item == '(')
       {
@@ -114,12 +112,7 @@ void infixToPostfix(char infix[], char postfix[])
       printf("\nInvalid infix Expression.\n");
       exit(1);
    }
-   if (top > 0)
-   {
-      printf("\nInvalid infix Expression.\n");
-      getchar();
-      exit(1);
-   }
+
 
    postfix[j] = '\0';
 }
