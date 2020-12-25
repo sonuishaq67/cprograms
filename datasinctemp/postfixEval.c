@@ -7,12 +7,15 @@ void PostfixEval(char postfix[])
     char ch;
     int val;
     int A, B;
-    for (i = 0; postfix[i] != 'e'; i++) {
+    for (i = 0; postfix[i] != 'e'; i++)
+    {
         ch = postfix[i];
-        if (isdigit(ch)) {
+        if (isdigit(ch))
+        {
             push(ch - '0');
         }
-        else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+        else if (ch == '+' || ch == '-' || ch == '*' || ch == '/')
+        {
             A = pop();
             B = pop();
 
@@ -40,13 +43,14 @@ int main()
 {
     int i;
     char postfix[SIZE];
-    printf(" \nEnter postfix expression,\npress e to end expression ");
-    for (i = 0; i <= SIZE - 1; i++) {
+    printf(" \nEnter postfix expression,\npress e to end expression : ");
+    for (i = 0; i <= SIZE - 1; i++)
+    {
         scanf("%c", &postfix[i]);
-        if (postfix[i] == 'e') 
+        if (postfix[i] == 'e')
         {
             break;
-        } 
+        }
     }
     PostfixEval(postfix);
     return 0;
